@@ -1,0 +1,8 @@
+{
+    "name": "mdaud/projeto_ingressos",
+        "autoload": {
+            "psr-4": {
+                "App\\": "src/"
+        }
+    }
+}
