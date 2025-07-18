@@ -1,0 +1,30 @@
+
+-- TABELA INGRESSOS --
+CREATE TABLE IF NOT EXISTS ingressos(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    nome TEXT NOT NULL,
+    descricao TEXT,
+    preco REAL NOT NULL,
+    quantidade INTEGER NOT NULL,
+    reservado INTEGER DEFAULT 0,
+    data_reserva INTEGER,
+    id_usuario INTEGER NOT NULL,
+    FOREIGN KEY (id_usuario) REFERENCES usuarios(id)
+);
+
+-- TABELA CLIENTES --
+CREATE TABLE IF NOT EXISTS clientes(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    nome TEXT NOT NULL,
+    email TEXT NOT NULL UNIQUE,
+);
+
+-- TABELA COMPRAS --
+CREATE TABLE IF NOT EXISTS compras(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    id_cliente INTEGER NOT NULL,
+    id_produto INTEGER NOT NULL,
+    data_compra INTEGER NOT NULL,
+    FOREIGN KEY (id_cliente) REFERENCES clientes(id),
+    FOREIGN KEY (id_produto) REFERENCES produtos(id)
+);

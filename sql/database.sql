@@ -1,0 +1,19 @@
+-- TABELA USUARIOS
+CREATE TABLE IF NOT EXISTS usuarios (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    nome TEXT NOT NULL,
+    email TEXT UNIQUE NOT NULL,
+    senha TEXT NOT NULL
+);
+-- TABELA INGRESSOS --
+CREATE TABLE IF NOT EXISTS ingressos(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    nome TEXT NOT NULL,
+    descricao TEXT,
+    preco REAL NOT NULL,
+    quantidade INTEGER NOT NULL,
+    reservado INTEGER DEFAULT 0,
+    data_reserva INTEGER,
+    id_usuario INTEGER NOT NULL,
+    FOREIGN KEY (id_usuario) REFERENCES usuarios(id)
+);

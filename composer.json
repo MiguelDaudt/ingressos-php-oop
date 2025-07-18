@@ -4,5 +4,12 @@
             "psr-4": {
                 "App\\": "src/"
         }
-    }
+    },
+
+      "authors": [
+        {
+            "name": "mdaud"
+        }
+    ],
+    "require": {}
 }
