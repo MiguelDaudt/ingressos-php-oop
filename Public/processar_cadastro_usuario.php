@@ -19,7 +19,8 @@ if (empty($nome) || empty($email) || empty($senha)) {
 $dadosUsuario = [
     'nome' => $nome,
     'email' => $email,
-    'senha' => password_hash($senha, PASSWORD_DEFAULT) 
+    'senha' => password_hash($senha, PASSWORD_DEFAULT) ,
+    'papel' => 'vendedor'
 ];
 
 $usuarioModel = new Usuario();

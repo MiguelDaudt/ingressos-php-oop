@@ -16,8 +16,8 @@ class Produto extends Model{
     public function inserir(array $dados){
 
         try{
-            $stmt = $this->pdo->prepare("INSERT INTO ingressos (nome, descricao, preco, quantidade, data_evento, reservado, data_reserva, id_usuario) 
-            VALUES (:nome, :descricao, :preco, :quantidade, :data_evento, :reservado, :data_reserva, :id_usuario)");
+            $stmt = $this->pdo->prepare("INSERT INTO ingressos (nome, descricao, preco, quantidade, data_evento, data_evento_fim, reservado, data_reserva, id_usuario) 
+            VALUES (:nome, :descricao, :preco, :quantidade, :data_evento, :data_evento_fim, :reservado, :data_reserva, :id_usuario)");
             
             return $stmt->execute([
             ':nome' => $dados['nome'],
@@ -25,6 +25,7 @@ class Produto extends Model{
             ':preco' => $dados['preco'],
             ':quantidade' => $dados['quantidade'],
             ':data_evento' => $dados['data_evento'],
+            ':data_evento_fim' => $dados['data_evento_fim'],
             ':reservado' => $dados['reservado'] ?? null,
             ':data_reserva' => $dados['data_reserva'] ?? null,
             ':id_usuario' => $dados['id_usuario'] 
@@ -55,6 +56,30 @@ class Produto extends Model{
             return $stmt->execute([':id' => $id]);
         } catch (PDOException $e){
             die("Erro ao deletar o o Evento: " . $e->getMessage());
+        }
+    }
+
+    public function editarProduto(int $id, array $dados){
+        try{
+            
+            $stmt = $this->pdo->prepare("UPDATE ingressos SET
+            nome = :nome,
+            descricao = :descricao,
+            preco = :preco,
+            quantidade = :quantidade,
+            data_evento = :data_evento
+            WHERE id = :id ");
+
+            return $stmt->execute([
+                ':nome' => $dados['nome'],
+                ':descricao' => $dados['descricao'],
+                ':preco' => $dados['preco'],
+                ':quantidade' => $dados['quantidade'],
+                ':data_evento' => $dados['data_evento'],
+                ':id' => $id
+            ]);
+        } catch(PDOException $e){
+            die("Erro ao editar o arquivo: " . $e->getMessage());
         }
     }
 }

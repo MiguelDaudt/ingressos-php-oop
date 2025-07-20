@@ -25,11 +25,7 @@
         }
     </style>
     <a href="logout.php" class="botao">Sair (Logout)</a><br><br>
-    <a href="/views/criar_produto.html" class="botao">Criar Evento</a>
-    <a href="/views/editar_produto.html" class="botao">Editar Evento</a>
-    <a href="/views/excluir_produto.html" class="botao">Excluir Evento</a>
     <a href="/Public/produtos/listar_produto.php" class="botao">Mostrar meus Evento</a>
-
-
+    <a href="/views/criar_produto.html" class="botao">Criar Evento</a>
 </body>
 </html>

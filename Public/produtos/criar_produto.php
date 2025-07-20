@@ -16,7 +16,7 @@
         $_POST['id_usuario'] = $_SESSION['usuario_id'];
 
         if($produto->inserir($_POST)){
-            header("Location: /Public/transicao_criar.html");
+            header("Location: /Public/produtos/listar_produto.php");
             exit();
         }
         else{
@@ -29,6 +29,6 @@
 else {
     echo "nao entrou no 'session'";
 }
-            
+
 
 

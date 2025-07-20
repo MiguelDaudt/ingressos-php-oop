@@ -24,7 +24,7 @@ abstract class Model{
         return $stmt->fetch();
     }
     
-    public function tudo(){
+    public function mostrar(){
         $stmt = $this->pdo->prepare("SELECT * FROM {$this->tabela}");
         return $stmt->fetchAll();
     }

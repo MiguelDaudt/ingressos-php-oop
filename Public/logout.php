@@ -1,11 +1,11 @@
 <?php
-session_start(); // Inicia a sessão para poder acessá-la
+session_start();
 
-session_unset(); // Remove todas as variáveis da sessão
+session_unset();
 
-session_destroy(); // Destrói a sessão em si
+session_destroy();
 
-// Redireciona para a página de login
-header('Location: /views/login_usuarios.html'); // Ajuste o caminho se necessário
+
+header('Location: /views/login_usuarios.html');
 exit();
 ?>
