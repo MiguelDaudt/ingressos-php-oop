@@ -48,4 +48,13 @@ class Produto extends Model{
         die("Erro ao executar tarefa: " . $e->getMessage());
         }
     }
+
+    public function deletarEvento(int $id){
+        try{
+            $stmt = $this->pdo->prepare("DELETE FROM {$this->tabela} WHERE id = :id");
+            return $stmt->execute([':id' => $id]);
+        } catch (PDOException $e){
+            die("Erro ao deletar o o Evento: " . $e->getMessage());
+        }
+    }
 }

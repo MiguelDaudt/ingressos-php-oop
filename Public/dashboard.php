@@ -11,7 +11,7 @@ if(isset($_SESSION['usuario_id'])){
     $dadosUsuarios = $verificador->verificarDadosUsuario($_SESSION['usuario_id']);
 
 if ($dadosUsuarios) {
-        require_once __DIR__ . '/../Public/dashboard_view.php';
+        require_once __DIR__ . '/../views/dashboard_view.php';
     } else {
         die("Erro: Usuário da sessão não encontrado no banco de dados. Por favor, faça o logout e login novamente.");
     }
