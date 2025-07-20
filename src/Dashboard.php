@@ -2,22 +2,20 @@
 
 namespace App;
 
+use App\Core\Model;
 
-class Dashboard{
 
-    public function verificarSession(){
+class Dashboard extends Model{
 
-        session_start();
+    protected function getTableName(): string
+    {
+        return 'usuario';
+    }
 
-        if (!isset($_SESSION['usuario_id'])) {
-            header('Location: processar_login_usuario.php');
-            exit();
-        }
+    public function verificarDadosUsuario($idDoUsuario){
     
-            return [
-            'id' => $_SESSION['usuario_id'],
-            'email' => $_SESSION['usuario_email'],
-            'nome' => $_SESSION['usuario_nome']
-            ];    
+            $stmt = $this->pdo->prepare("SELECT id, nome, email FROM usuarios WHERE id = :id");
+            $stmt->execute([':id' => $idDoUsuario]);
+            return $stmt->fetch();
         }    
 }

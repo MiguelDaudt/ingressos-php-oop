@@ -1,67 +1,51 @@
-<?php 
+<?php
 
 namespace App\Models;
 
-use App\Database;
 use App\Core\Model;
+use PDO;
 use PDOException;
-
-class Produto extends Model{
     
+class Produto extends Model{
+
     protected function getTableName(): string
     {
-        return 'ingressos';
+    return 'ingressos';
     }
 
-    
-    private function garantirTabelaIngressos()
-    {
-        try {
-            $sql = "CREATE TABLE IF NOT EXISTS ingressos(
-                    id INTEGER PRIMARY KEY AUTOINCREMENT,
-                    nome TEXT NOT NULL,
-                    descricao TEXT,
-                    preco REAL NOT NULL,
-                    quantidade INTEGER NOT NULL,
-                    reservado INTEGER DEFAULT 0,
-                    data_reserva INTEGER,
-                    id_usuario INTEGER NOT NULL,
-                    FOREIGN KEY (id_usuario) REFERENCES usuarios(id)
-                    )";
-            $this->pdo->exec($sql);
-        } catch (PDOException $e) {
-
-            die("Erro fatal: Não foi possível verificar/criar a tabela de usuários. " . $e->getMessage());
-        }
-    }
-
-    public function inserir(string $nome, string $descricao, float $preco, int $quantidade, int $reservado, int $data_reserva, int $id_usuario){
-        if ($_SERVER["REQUEST_METHOD"] !== "POST"){
-                die("Erro ao resgatar informacoes");
-        }
-
-            $nome = $_POST['nome'] ?? null;
-            $descricao = $_POST['descricao'] ?? null;
-            $preco = $_POST['preco'] ?? null;
-            $quantidade = $_POST['quantidade'] ?? null;
-            $reservado = $_POST['reservado'] ?? null;
-            $data_reserva = $_POST['data_reserva'] ?? null;
-            $id_usuario = $_POST['id_usuario'] ?? null;
+    public function inserir(array $dados){
 
         try{
-        $stmt = $this->pdo->prepare("INSERT INTO ingressos (nome, descricao, preco, quantidade, reservado, data_reserva, id_usuario) VALUES (:nome, :descricao, :preco, :quantidade, :reservado, :data_reserva, :id_usuario)");
-        $stmt->execute([
-            ':nome' => $nome,
-            ':descricao' => $descricao,
-            ':preco' => $preco,
-            ':quantidade' => $quantidade,
-            ':reservado' => $reservado,
-            ':data_reserva' => $data_reserva,
-            ':id_usuario' => $id_usuario
+            $stmt = $this->pdo->prepare("INSERT INTO ingressos (nome, descricao, preco, quantidade, data_evento, reservado, data_reserva, id_usuario) 
+            VALUES (:nome, :descricao, :preco, :quantidade, :data_evento, :reservado, :data_reserva, :id_usuario)");
+            
+            return $stmt->execute([
+            ':nome' => $dados['nome'],
+            ':descricao' => $dados['descricao'],
+            ':preco' => $dados['preco'],
+            ':quantidade' => $dados['quantidade'],
+            ':data_evento' => $dados['data_evento'],
+            ':reservado' => $dados['reservado'] ?? null,
+            ':data_reserva' => $dados['data_reserva'] ?? null,
+            ':id_usuario' => $dados['id_usuario'] 
             ]);
+            
         } catch (PDOException $e) {
             die("Erro ao cadastrar produto. Por favor, tente novamente. " . $e->getMessage());
+            
         }
     }
 
+    public function mostrarEvento(int $id_usuario){
+
+        try{
+            
+            $stmt = $this->pdo->prepare("SELECT * FROM {$this->tabela} WHERE id_usuario = :id_usuario ORDER BY id DESC");
+            $stmt->execute([':id_usuario' => $id_usuario]);
+            return $stmt->fetchAll();
+
+        } catch (PDOException $e){
+        die("Erro ao executar tarefa: " . $e->getMessage());
+        }
+    }
 }

@@ -17,13 +17,41 @@ use App\Database;
 // Adiciona uma linha em branco no início para melhor visualização.
 echo "\n";
 
+
+try{
+    $pdo = Database::conectar();
+    echo "✅ Conexão com o banco de dados estabelecida com sucesso!\n\n";
+
+    $stmt = $pdo->query("CREATE TABLE IF NOT EXISTS ingressos(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    nome TEXT NOT NULL,
+    descricao TEXT,
+    preco REAL NOT NULL,
+    quantidade INTEGER NOT NULL,
+    reservado INTEGER DEFAULT 0,
+    data_reserva INTEGER,
+    id_usuario INTEGER NOT NULL,
+    FOREIGN KEY (id_usuario) REFERENCES usuarios(id)
+    )");
+
+    $stmt->execute();
+
+    if ($stmt){
+        echo "tabela criada com sucesso";
+    }
+
+} catch(PDOException $e){
+        echo "❌ ERRO: " . $e->getMessage() . "\n";
+
+}
+
 try {
     // 1. Conecta ao banco de dados
     $pdo = Database::conectar();
     echo "✅ Conexão com o banco de dados estabelecida com sucesso!\n\n";
 
     // 2. Prepara e executa a consulta
-    $stmt = $pdo->query("SELECT id, nome, email, senha FROM usuarios ORDER BY id ASC");
+    $stmt = $pdo->query("SELECT id, nome, descricao, preco, data_evento FROM ingressos ORDER BY id ASC");
     
     // 3. Busca todos os resultados
     $usuarios = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -41,7 +69,7 @@ try {
 } catch (PDOException $e) { // A classe PDOException é encontrada globalmente pelo PHP
     // Trata erros, como a tabela não existir
     echo "❌ ERRO: " . $e->getMessage() . "\n";
-    echo "   (Verifique se a tabela 'usuarios' já foi criada).\n";
+    echo "   (Verifique se a tabela 'ingressos' já foi criada).\n";
 }
 
 // Adiciona uma linha em branco no final.

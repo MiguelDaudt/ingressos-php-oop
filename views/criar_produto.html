@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <style>
+        .botao {
+            display: inline-block;
+            padding: 10px 15px;
+            margin: 10px 0;
+            background-color: #007bff;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            border: none;
+            cursor: pointer;
+        }
+    </style>
+    <h1>CRIAR PRODUTO</h1>
+    <form action="../Public/produtos/criar_produto.php" method="post">
+        <label>Nome do Evento</label>
+        <input type="text" name="nome"><br><br>
+
+        <label>Descricao do Evento</label>
+        <input type="text" name="descricao"><br><br>
+
+        <label>Preco do Evento</label>
+        <input type="number" name="preco"><br><br>
+
+        <label>Quantidade de ingressos</label>
+        <input type="number" name="quantidade"><br><br>
+
+        <label>Data do Evento</label>
+        <input type="date" name="data_evento"><br><br>
+
+        <button type="submit" name="criar" class="botao">CRIAR</button>
+    </form>
+</body>
+</html>

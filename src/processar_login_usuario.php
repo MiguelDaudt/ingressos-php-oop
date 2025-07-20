@@ -24,6 +24,7 @@ class LoginUsuarios{
             die("Voce nao tem permissao");
 
         }
+
             $nome = $_POST['nome'] ?? null;
             $email = $_POST['email'] ?? null;
             $senha = $_POST['senha'] ?? null;
@@ -38,6 +39,7 @@ class LoginUsuarios{
             $usuario = $stmt->fetch();
 
             if($usuario && password_verify($senha, $usuario['senha'])){
+
                 $_SESSION['usuario_id'] = $usuario['id'];
                 $_SESSION['usuario_email'] = $usuario['email'];
                 $_SESSION['usuario_nome'] = $usuario['nome'];

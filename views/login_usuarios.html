@@ -6,6 +6,19 @@
     <title>Document</title>
 </head>
 <body>
+    <style>
+        .botao {
+            display: inline-block;
+            padding: 10px 15px;
+            margin: 10px 0;
+            background-color: #007bff;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            border: none;
+            cursor: pointer;
+        }
+    </style>
     <h1>LOGIN USUARIOS</h1>
     <form action="../src/processar_login_usuario.php" method="post">
         <label>Usuario:</label>
@@ -17,7 +30,7 @@
         <label>Senha:</label>
         <input type="password" name="senha"><br><br>
 
-        <button type="submit" name="Login">Login</button>
+        <button type="submit" name="Login" class="botao">Login</button>
     </form>
 </body>
 </html>
