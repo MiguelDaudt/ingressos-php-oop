@@ -9,7 +9,6 @@
 </head>
 <body>
     <h1>Bem-vindo ao seu Dashboard, <?=htmlspecialchars($dadosUsuarios['nome'])?></h1>
-    <p>Este é um conteúdo exclusivo para usuários logados.</p>
     <br>
     <style>
         .botao {
@@ -25,7 +24,5 @@
         }
     </style>
     <a href="/Public/logout.php" class="botao">Sair (Logout)</a><br><br>
-    <a href="/Public/produtos/listar_produto.php" class="botao">Mostrar meus Evento</a>
-    <a href="/views/criar_produto.html" class="botao">Criar Evento</a>
 </body>
 </html>

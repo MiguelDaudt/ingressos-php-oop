@@ -46,4 +46,22 @@ class Usuario extends Model
             die("Erro de banco de dados ao criar usuário: " . $e->getMessage());
         }
     }
+
+    public function login(string $email, string $senha){
+        
+        $colunas = 'id, nome, email, senha, papel';
+        
+        try{
+            $stmt = $this->pdo->prepare("SELECT $colunas FROM usuarios WHERE email = :email");
+            $stmt->execute([':email' => $email]);
+            $usuario = $stmt->fetch();
+
+            if($usuario && password_verify($senha, $usuario['senha'])){
+                return $usuario;
+            }
+            return false;
+        } catch(PDOException $e){
+            die("Erro ao realizar o Login: " . $e->getMessage());
+        }
+    }
 }

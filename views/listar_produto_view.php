@@ -50,7 +50,7 @@
         </tbody>
     </table>
         <br><br>
-        <a href="/Public/dashboard.php" class="botao">Voltar</a>
+        <a href="/Public/Usuarios/dashboard.php" class="botao">Voltar</a>
         <a href="/views/criar_produto.html" class="botao">Criar Evento</a>
 </body>
 </html>

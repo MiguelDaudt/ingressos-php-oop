@@ -19,19 +19,20 @@
             cursor: pointer;
         }
     </style>
-    <h1>LOGIN USUARIOS</h1>
-    <form action="../Public/login.php" method="post">
+    <h1>CADASTRO CLIENTE</h1>
+    <form action="../Public/Clientes/processar_cadastro_clientes.php"method="POST" >
         
-        <label>E-mail:</label>
-        <input type="text" name="email"><br><br>
+        <label>Nome</label>
+    <input type="text" name="nome"><br><br>
+        
+        <label>E-mail</label>
+    <input type="text" name="email"><br><br> 
 
-        <label>Senha:</label>
-        <input type="password" name="senha"><br><br>
+        <label>Senha</label>
+    <input type="password" name="senha"><br><br> 
 
-        <input type="hidden" name="papel_esperado" value="vendedor">
-
-        <button type="submit" name="Login" class="botao">Login</button>
+    <button type="submit" name="cadastrar" class="botao">Cadastrar</button> 
     </form>
-        <a href="/views/index.html" class="botao">Voltar</a>
+    <a href="/views/index.html" class="botao">Voltar</a>
 </body>
 </html>

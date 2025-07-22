@@ -1,6 +1,6 @@
 <?php
 
-require_once __DIR__ . '/../vendor/autoload.php';
+require_once __DIR__ . '/../../vendor/autoload.php';
 
 session_start();
 
@@ -11,11 +11,10 @@ if(isset($_SESSION['usuario_id'])){
     $dadosUsuarios = $verificador->verificarDadosUsuario($_SESSION['usuario_id']);
 
 if ($dadosUsuarios) {
-        require_once __DIR__ . '/../views/dashboard_view.php';
+        require_once __DIR__ . '/../../views/dashboard_cliente_view.php';
     } else {
         die("Erro: Usuário da sessão não encontrado no banco de dados. Por favor, faça o logout e login novamente.");
     }
-
     } else{
     die("Acesso negado! Sessao nao encontrada");
 }
