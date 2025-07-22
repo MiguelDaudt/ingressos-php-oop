@@ -10,25 +10,30 @@ try {
     echo "Conexão bem-sucedida!\n";
 
     // SQL para criar a tabela de usuários (dependência para ingressos)
-    $sqlUsuarios = "CREATE TABLE IF NOT EXISTS usuarios (
-        id INTEGER PRIMARY KEY AUTOINCREMENT,
-        nome TEXT NOT NULL,
-        email TEXT NOT NULL UNIQUE,
-        senha TEXT NOT NULL
-    );";
+    $sqlUsuarios = ("CREATE TABLE usuarios (
+	id	INTEGER,
+	nome	TEXT NOT NULL,
+	email	TEXT NOT NULL UNIQUE,
+	senha	TEXT NOT NULL,
+	papel	TEXT NOT NULL DEFAULT 'cliente',
+	PRIMARY KEY(id)"
+    );
 
     // SQL para criar a tabela de ingressos
-    $sqlIngressos = "CREATE TABLE IF NOT EXISTS ingressos (
-        id INTEGER PRIMARY KEY AUTOINCREMENT,
-        nome TEXT NOT NULL,
-        descricao TEXT,
-        preco REAL NOT NULL,
-        quantidade INTEGER NOT NULL,
-        reservado INTEGER DEFAULT 0,
-        data_reserva INTEGER,
-        id_usuario INTEGER NOT NULL,
-        FOREIGN KEY (id_usuario) REFERENCES usuarios(id)
-    );";
+    $sqlIngressos = ("CREATE TABLE ingressos (
+	id	INTEGER,
+	nome	TEXT NOT NULL,
+	descricao	TEXT,
+	preco	REAL NOT NULL,
+	quantidade	INTEGER NOT NULL,
+	reservado	INTEGER DEFAULT 0,
+	data_reserva	INTEGER,
+	id_usuario	NUMERIC NOT NULL,
+	data_evento	TEXT,
+	data_evento_fim	TEXT,
+	PRIMARY KEY(id AUTOINCREMENT),
+	FOREIGN KEY(id_usuario) REFERENCES usuarios(id)
+    ");
 
     // Executa os comandos SQL
     $pdo->exec($sqlUsuarios);
