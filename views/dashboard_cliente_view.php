@@ -24,5 +24,6 @@
         }
     </style>
     <a href="/Public/logout.php" class="botao">Sair (Logout)</a><br><br>
+    <a href="/Public/Clientes/vitrine_compras.php">Vitrine Ingressos</a>
 </body>
 </html>

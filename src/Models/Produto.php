@@ -82,4 +82,65 @@ class Produto extends Model{
             die("Erro ao editar o arquivo: " . $e->getMessage());
         }
     }
+    public function mostrarEventoDisponivel(){
+        try{
+            $stmt = $this->pdo->prepare("SELECT * FROM {$this->tabela} WHERE quantidade > 0 ORDER BY id DESC");
+            $stmt->execute();
+            return $stmt->fetchAll();
+        } catch(PDOException $e){
+            die("Erro ao buscar mostrar eventos: " . $e->getMessage());
+        }
+    }
+
+    public function reservar(int $id_ingresso, int $id_cliente) : bool{
+
+        $this->liberarReserva($id_ingresso);
+
+        $sql = "UPDATE {$this->tabela} SET 
+        quantidade_reservada = quantidade_reservada + 1,
+        data_reserva = :tempo_agora,
+        id_usuario_reserva = :id_cliente
+        WHERE id = :id_ingresso AND (quantidade - quantidade_reservada) > 0";
+
+        $stmt = $this->pdo->prepare($sql);
+        $sucesso = $stmt->execute([
+            ':tempo_agora' => time(),
+            ':id_cliente' => $id_cliente,
+            ':id_ingresso' => $id_ingresso
+        ]);
+
+        return $stmt->rowCount() > 0;
+    }
+
+    public function confirmarCompra(int $id_ingresso): bool{
+    
+        $sql = "UPDATE {$this->tabela} SET 
+                quantidade = quantidade - 1,
+                quantidade_reservada = quantidade_reservada - 1,
+                data_reserva = NULL,
+                id_usuario_reserva = NULL
+                WHERE id = :id_ingresso";
+        
+        $stmt = $this->pdo->prepare($sql);
+        return $stmt->execute([':id_ingresso' => $id_ingresso]);
+    }
+
+
+    public function liberarReserva(int $id_ingresso): void{
+    
+        $tempo_expiracao = time() - 120;
+
+        $sql = "UPDATE {$this->tabela} SET 
+                    quantidade_reservada = quantidade_reservada - 1,
+                    data_reserva = NULL,
+                    id_usuario_reserva = NULL
+                WHERE id = :id_ingresso AND data_reserva < :tempo_expiracao";
+        
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->execute([
+            ':id_ingresso' => $id_ingresso,
+            ':tempo_expiracao' => $tempo_expiracao
+        ]);
+    }
+
 }

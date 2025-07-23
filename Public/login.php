@@ -22,7 +22,11 @@ use App\Models\Usuario;
         $usuario = $usuarioM->login($email, $senha);
 
         if($usuario){
-        if($usuario === $papel_esperado){
+
+                $papelDoUsuarioNoBanco = trim($usuario['papel']);
+                $papelEsperadoDoForm = trim($papel_esperado);
+
+        if($papelDoUsuarioNoBanco === $papelEsperadoDoForm){
                 $_SESSION['usuario_id'] = $usuario['id'];
                 $_SESSION['usuario_email'] = $usuario['email'];
                 $_SESSION['usuario_nome'] = $usuario['nome'];
