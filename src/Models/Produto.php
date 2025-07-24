@@ -94,8 +94,6 @@ class Produto extends Model{
 
     public function reservar(int $id_ingresso, int $id_cliente) : bool{
 
-        $this->liberarReserva($id_ingresso);
-
         $sql = "UPDATE {$this->tabela} SET 
         quantidade_reservada = quantidade_reservada + 1,
         data_reserva = :tempo_agora,

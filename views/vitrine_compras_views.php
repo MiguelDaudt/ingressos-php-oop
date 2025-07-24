@@ -28,7 +28,7 @@
             <p><strong>Preço:</strong> R$ <?= htmlspecialchars($ingresso['preco']) ?></p>
             <p><strong>Disponíveis:</strong> <?= htmlspecialchars($ingresso['quantidade']) ?></p>
             
-            <a href="/public/comprar.php?id=<?= $ingresso['id'] ?>" class="botao">Comprar Ingresso</a>
+            <a href="/Public/reservar.php?id=<?= $ingresso['id'] ?>" class="botao">Comprar Ingresso</a>
         </div>
         <hr>
     <?php endforeach; ?>
