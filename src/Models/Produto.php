@@ -141,4 +141,18 @@ class Produto extends Model{
         ]);
     }
 
+    public function mostrarEventoComprado(int $id_cliente){
+        
+        try{
+            
+            $stmt = $this->pdo->prepare("SELECT * FROM {$this->tabela} WHERE id_usuario_reserva = :id_usuario_reserva ORDER BY data_reserva DESC");
+            $stmt->execute([':id_usuario_reserva' => $id_cliente]);
+            return $stmt->fetchAll();
+
+        } catch (PDOException $e){
+        die("Erro ao executar tarefa: " . $e->getMessage());
+        }
+
+    }
+
 }
