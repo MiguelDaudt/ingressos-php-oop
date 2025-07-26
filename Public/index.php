@@ -2,13 +2,18 @@
 
 require_once __DIR__ . '/../vendor/autoload.php';
 
-use App\Models\Usuario;
-use App\Database;
+session_start();
 
+use App\Models\Produto;
 
-$db = Database::conectar();
+$mostrar = new Produto();
+$ingressosDisponiveis = $mostrar->mostrarEventoDisponivel();
 
-var_dump($db);
+require_once __DIR__ . '/../views/index.html';
+require_once __DIR__ . '/../views/Compras/vitrine_compras_views.php';
 
-$oi = new Usuario();
-$oi->oie();
+if(isset($_SESSION['usuario_id'])){
+    if($_SERVER['REQUEST_METHOD'] === 'POST'){
+    require_once __DIR__ . '/Clientes/meus_ingressos.php';
+    }
+}

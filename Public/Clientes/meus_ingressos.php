@@ -8,7 +8,9 @@ use App\Models\Compra;
 use App\Models\Produto;
 
 if(!isset($_SESSION['usuario_id'])){
-    die("Acesso negado");
+echo "<script>alert('Voce precisa estar logado para poder visualizar seus ingressos');
+window.location.href = '/Public/index.php';
+</script>";
 }
 
 

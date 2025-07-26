@@ -1,9 +1,16 @@
+<?php
+?>
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-    <title>Vitrine de Eventos</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
 </head>
 <body>
+    <h1>Bem-vindo ao seu Dashboard, <?=htmlspecialchars($dadosUsuarios['nome'])?></h1>
+    <p>Este é um conteúdo exclusivo para Usuários.</p>
+    <br>
     <style>
         .botao {
             display: inline-block;
@@ -17,10 +24,9 @@
             cursor: pointer;
         }
     </style>
-    <h1>Eventos Disponíveis</h1>
-    <p>Bem-vindo(a), <?= htmlspecialchars($_SESSION['usuario_nome']) ?>!</p>
-    <hr>
-
+    <a href="/Public/logout.php" class="botao">Sair (Logout)</a>
+    <a href="/Public/produtos/listar_produto.php" class="botao">Mostrar meus Evento</a>
+    <a href="/views/criar_produto.html" class="botao">Criar Evento</a>
     <?php foreach ($ingressosDisponiveis as $ingresso): ?>
         <div>
             <h3><?= htmlspecialchars($ingresso['nome']) ?></h3>
@@ -32,9 +38,5 @@
         </div>
         <hr>
     <?php endforeach; ?>
-
-    <a href="/public/clientes/meus_ingressos.php" class="botao">Ver Meus Ingressos</a>
-    <br>
-    <a href="/Public/Clientes/dashboard_cliente.php" class="botao">Voltar</a>
 </body>
 </html>

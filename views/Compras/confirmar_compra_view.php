@@ -36,7 +36,7 @@
         <button type="submit" class="botao">Confirmar e Comprar Agora</button>
     </form>
     <br>
-    <a href="/Public/Clientes/vitrine_compras.php" class="botao">Cancelar e voltar para a vitrine</a>
+    <a href="/Public/Clientes/dashboard_cliente.php" class="botao">Cancelar e voltar para a vitrine</a>
 
     <script>
         let tempoRestante = 120; 
@@ -56,7 +56,7 @@
             if (tempoRestante <= 0) {
                 clearInterval(intervalo); 
                 alert("Seu tempo de reserva expirou! O ingresso foi liberado.");
-                window.location.href = '/Public/Clientes/vitrine_compras.php';
+                window.location.href = '/Public/Clientes/dashboard_cliente.php';
             }
         }, 1000);
     </script>

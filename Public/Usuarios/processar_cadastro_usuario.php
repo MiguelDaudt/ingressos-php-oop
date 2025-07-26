@@ -26,7 +26,7 @@ $dadosUsuario = [
 $usuarioModel = new Usuario();
 if ($usuarioModel->criar($dadosUsuario)) {
 
-    header('Location: /views/login_usuarios.html'); 
+    header('Location: /views/Usuarios/login_usuarios.html'); 
     exit();
 
 } else {

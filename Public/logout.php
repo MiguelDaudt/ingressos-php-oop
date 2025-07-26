@@ -6,6 +6,6 @@ session_unset();
 session_destroy();
 
 
-header('Location: /views/login_usuarios.html');
+header('Location: /Public/index.php');
 exit();
 ?>

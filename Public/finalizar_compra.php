@@ -37,7 +37,7 @@ try {
          throw new \Exception("Sua reserva expirou ou é inválida. Por favor, tente novamente desde a vitrine.");
     }
 
-    $compra_confirmada = $ingresso->confirmarCompra($id_ingressos);
+    $compra_confirmada = $ingresso->confirmarCompra($id_ingressos, $id_cliente);
     
     if (!$compra_confirmada) {
         throw new \Exception("Não foi possível dar baixa no estoque do ingresso.");

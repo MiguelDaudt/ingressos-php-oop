@@ -6,8 +6,22 @@
     <title>Meus Ingressos</title>
 </head>
 <body>
+    <style>
+        .botao {
+            display: inline-block;
+            padding: 10px 15px;
+            margin: 10px 0;
+            background-color: #007bff;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            border: none;
+            cursor: pointer;
+        }
+    </style>
     <h1>Meus Ingressos Comprados</h1>
     <p>Olá, <?= htmlspecialchars($_SESSION['usuario_nome']) ?>! Aqui estão os ingressos que você adquiriu.</p>
+    <a href="/Public/Clientes/dashboard_cliente.php" class="botao">Voltar para o Dashboard</a>
     <hr>
 
     <?php if (empty($meus_ingressos)): ?>
@@ -29,7 +43,5 @@
 
     <?php endif; ?>
     
-    <br>
-    <a href="/Public/Clientes/dashboard_cliente.php">Voltar para o Dashboard</a>
 </body>
 </html>

@@ -16,8 +16,8 @@ class Produto extends Model{
     public function inserir(array $dados){
 
         try{
-            $stmt = $this->pdo->prepare("INSERT INTO ingressos (nome, descricao, preco, quantidade, data_evento, data_evento_fim, reservado, data_reserva, id_usuario) 
-            VALUES (:nome, :descricao, :preco, :quantidade, :data_evento, :data_evento_fim, :reservado, :data_reserva, :id_usuario)");
+            $stmt = $this->pdo->prepare("INSERT INTO ingressos (nome, descricao, preco, quantidade, data_evento, data_evento_fim, data_reserva, id_usuario) 
+            VALUES (:nome, :descricao, :preco, :quantidade, :data_evento, :data_evento_fim, :data_reserva, :id_usuario)");
             
             return $stmt->execute([
             ':nome' => $dados['nome'],
@@ -26,7 +26,6 @@ class Produto extends Model{
             ':quantidade' => $dados['quantidade'],
             ':data_evento' => $dados['data_evento'],
             ':data_evento_fim' => $dados['data_evento_fim'],
-            ':reservado' => $dados['reservado'] ?? null,
             ':data_reserva' => $dados['data_reserva'] ?? null,
             ':id_usuario' => $dados['id_usuario'] 
             ]);
@@ -110,17 +109,30 @@ class Produto extends Model{
         return $stmt->rowCount() > 0;
     }
 
-    public function confirmarCompra(int $id_ingresso): bool{
-    
-        $sql = "UPDATE {$this->tabela} SET 
-                quantidade = quantidade - 1,
-                quantidade_reservada = quantidade_reservada - 1,
-                data_reserva = NULL,
-                id_usuario_reserva = NULL
-                WHERE id = :id_ingresso";
-        
-        $stmt = $this->pdo->prepare($sql);
-        return $stmt->execute([':id_ingresso' => $id_ingresso]);
+    public function confirmarCompra(int $id_ingresso, int $id_cliente): bool
+    {
+        try {
+
+            $sql = "UPDATE {$this->tabela} SET 
+            quantidade = quantidade - 1,
+            quantidade_reservada = quantidade_reservada - 1,
+            data_reserva = NULL,
+            id_usuario_reserva = NULL
+            WHERE id = :id_ingresso AND id_usuario_reserva = :id_cliente";
+            
+            $stmt = $this->pdo->prepare($sql);
+            
+            $stmt->execute([
+                ':id_ingresso' => $id_ingresso,
+                ':id_cliente'  => $id_cliente
+            ]);
+
+            return $stmt->rowCount() > 0;
+
+        } catch (PDOException $e) {
+            error_log("Erro ao confirmar compra: " . $e->getMessage());
+            return false;
+        }
     }
 
 

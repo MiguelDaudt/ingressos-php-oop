@@ -6,9 +6,15 @@ session_start();
 
 use App\Models\Produto;
 
-if(!isset($_SESSION['usuario_id']) || $_SESSION['usuario_papel'] !== 'cliente'){
-    die("Acesso somente para clientes logados");
-}
+if(!isset($_SESSION['usuario_id'])){
+        echo "<script>alert('Voce precisa estar logado como \'Cliente\' para poder reservar um ingresso');
+        window.location.href = '/Public/index.php';
+        </script>";
+} elseif($_SESSION['usuario_papel'] !== 'cliente'){
+        echo "<script>alert('Voce precisa estar logado como \'Cliente\' para poder reservar um ingresso');
+        window.location.href = '/Public/Usuarios/dashboard.php';
+        </script>";
+    }
 
 $id_ingressos = filter_input(INPUT_GET, 'id', FILTER_VALIDATE_INT);
 
