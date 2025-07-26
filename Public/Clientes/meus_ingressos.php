@@ -20,4 +20,4 @@ $mostarCompra = new Compra();
 $meus_ingressos = $mostarCompra->mostrarEventoComprado($id_cliente);
 
 
-require_once __DIR__ . '/../../views/meus_ingressos_view.php';
+require_once __DIR__ . '/../../views/Compras/meus_ingressos_view.php';

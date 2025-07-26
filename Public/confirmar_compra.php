@@ -27,5 +27,5 @@ if ($produto['id_usuario_reserva'] !== $_SESSION['usuario_id']) {
     die("Esta reserva não pertence a você ou já expirou.");
 }
 
-require_once __DIR__ . '/../views/confirmar_compra_view.php';
+require_once __DIR__ . '/../views/Compras/confirmar_compra_view.php';
 
