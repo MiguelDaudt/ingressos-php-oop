@@ -16,12 +16,15 @@ class Produto extends Model{
     public function inserir(array $dados){
 
         try{
-            $stmt = $this->pdo->prepare("INSERT INTO ingressos (nome, descricao, preco, quantidade, data_evento, data_evento_fim, data_reserva, id_usuario) 
-            VALUES (:nome, :descricao, :preco, :quantidade, :data_evento, :data_evento_fim, :data_reserva, :id_usuario)");
+            $stmt = $this->pdo->prepare("INSERT INTO ingressos (caminho_imagem, nome, descricao, endereco, tipo_evento, preco, quantidade, data_evento, data_evento_fim, data_reserva, id_usuario) 
+            VALUES (:caminho_imagem, :nome, :descricao, :endereco, :tipo_evento, :preco, :quantidade, :data_evento, :data_evento_fim, :data_reserva, :id_usuario)");
             
             return $stmt->execute([
+            ':caminho_imagem' => $dados['caminho_imagem'],
             ':nome' => $dados['nome'],
             ':descricao' => $dados['descricao'],
+            ':endereco' => $dados['endereco'],
+            ':tipo_evento' => $dados['tipo_evento'],
             ':preco' => $dados['preco'],
             ':quantidade' => $dados['quantidade'],
             ':data_evento' => $dados['data_evento'],
@@ -62,16 +65,22 @@ class Produto extends Model{
         try{
             
             $stmt = $this->pdo->prepare("UPDATE ingressos SET
+            caminho_imagem = :caminho_imagem,
             nome = :nome,
             descricao = :descricao,
+            tipo_evento = :tipo_evento,
+            endereco = :endereco,
             preco = :preco,
             quantidade = :quantidade,
             data_evento = :data_evento
             WHERE id = :id ");
 
             return $stmt->execute([
+                ':caminho_imagem' => $dados['caminho_imagem'],
                 ':nome' => $dados['nome'],
                 ':descricao' => $dados['descricao'],
+                ':tipo_evento' => $dados['tipo_evento'],
+                ':endereco' => $dados['endereco'],
                 ':preco' => $dados['preco'],
                 ':quantidade' => $dados['quantidade'],
                 ':data_evento' => $dados['data_evento'],

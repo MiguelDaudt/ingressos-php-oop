@@ -2,21 +2,9 @@
 <html lang="pt-br">
 <head>
     <title>Meus Ingressos</title>
+    <link rel="stylesheet" href="/Public/css/style.css">
 </head>
 <body>
-    <style>
-        .botao {
-            display: inline-block;
-            padding: 10px 15px;
-            margin: 10px 0;
-            background-color: #007bff;
-            color: white;
-            text-decoration: none;
-            border-radius: 5px;
-            border: none;
-            cursor: pointer;
-        }
-    </style>
     <h1>Meus Ingressos Cadastrados</h1>
     <table border="1">
         <thead>
@@ -24,6 +12,8 @@
                 <th>ID</th>
                 <th>Nome</th>
                 <th>Descricao</th>
+                <th>Categoria</th>
+                <th>Endereco</th>
                 <th>Quantidade</th>
                 <th>Preço</th>
                 <th>Data do Evento</th>
@@ -37,6 +27,8 @@
                     <td><?= htmlspecialchars($produto['id']) ?></td>
                     <td><?= htmlspecialchars($produto['nome']) ?></td>
                     <td><?= htmlspecialchars($produto['descricao']) ?></td>
+                    <td><?= htmlspecialchars($produto['tipo_evento']) ?></td>
+                    <td><?= htmlspecialchars($produto['endereco']) ?></td>
                     <td><?= htmlspecialchars($produto['quantidade']) ?></td>
                     <td><?= htmlspecialchars($produto['preco']) ?></td>
                     <td><?= htmlspecialchars($produto['data_evento']) ?></td>

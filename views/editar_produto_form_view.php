@@ -2,21 +2,9 @@
 <html lang="pt-br">
 <head>
     <title>Editar Ingresso</title>
+    <link rel="stylesheet" href="/Public/css/style.css">
 </head>
 <body>
-<style>
-        .botao {
-            display: inline-block;
-            padding: 10px 15px;
-            margin: 10px 0;
-            background-color: #007bff;
-            color: white;
-            text-decoration: none;
-            border-radius: 5px;
-            border: none;
-            cursor: pointer;
-        }
-    </style>
     <h1>Atualizando Evento: <?= htmlspecialchars($eventoAtual['nome']) ?></h1>
 
     <form method="POST" action="/public/produtos/editar_produto.php?id=<?= htmlspecialchars($eventoAtual['id']) ?>">
@@ -29,6 +17,22 @@
         <div>
             <label for="descricao">Descrição:</label>
             <textarea id="descricao" name="descricao"><?= htmlspecialchars($eventoAtual['descricao']) ?></textarea>
+        </div>
+
+        <div>
+            <label for="endereco">Endereco do evento:</label>
+            <input type="text" id="endereco" name="endereco" value="<?= htmlspecialchars($eventoAtual['endereco']) ?>">
+        </div>
+
+        <div>
+            <label for="tipo_evento">Tipo de Evento:</label>
+                <select id="tipo_evento" name="tipo_evento">
+                    <option value="show">Show</option>
+                    <option value="teatro">Teatro</option>
+                    <option value="comedia">Comédia</option>
+                    <option value="danca">Dança</option>
+                    <option value="outro">Outro</option>
+                </select><br><br>
         </div>
 
         <div>

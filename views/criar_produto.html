@@ -1,46 +1,61 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Cadastrar Novo Evento</title>
+    <link rel="stylesheet" href="/Public/css/style.css">
 </head>
 <body>
-    <style>
-        .botao {
-            display: inline-block;
-            padding: 10px 15px;
-            margin: 10px 0;
-            background-color: #007bff;
-            color: white;
-            text-decoration: none;
-            border-radius: 5px;
-            border: none;
-            cursor: pointer;
-        }
-    </style>
-    <h1>CRIAR PRODUTO</h1>
-    <form action="../Public/produtos/criar_produto.php" method="post">
-        <label>Nome do Evento</label>
-        <input type="text" name="nome"><br><br>
+    <h1>Cadastrar Novo Evento</h1>
 
-        <label>Descricao do Evento</label>
-        <input type="text" name="descricao"><br><br>
+    <form action="/public/produtos/criar_produto.php" method="post" enctype="multipart/form-data">
+        
+        <p>
+            <label for="nome">Nome do Evento:</label><br>
+            <input type="text" id="nome" name="nome" required>
+        </p>
+        <p>
+            <label for="descricao">Descrição:</label><br>
+            <textarea id="descricao" name="descricao"></textarea>
+        </p>
+        <p>
+            <label for="endereco">Endereço:</label><br>
+            <input type="text" id="endereco" name="endereco">
+        </p>
+        <p>
+            <label for="tipo_evento">Tipo de Evento:</label><br>
+            <select id="tipo_evento" name="tipo_evento">
+                <option value="show">Show</option>
+                <option value="teatro">Teatro</option>
+                <option value="comedia">Comédia</option>
+                <option value="danca">Dança</option>
+                <option value="outro">Outro</option>
+            </select>
+        </p>
+        <p>
+            <label for="preco">Preço (ex: 25.50):</label><br>
+            <input type="number" id="preco" name="preco" step="0.01" required>
+        </p>
+        <p>
+            <label for="quantidade">Quantidade de Ingressos:</label><br>
+            <input type="number" id="quantidade" name="quantidade" required>
+        </p>
+        <p>
+            <label for="data_evento">Data de Início do Evento:</label><br>
+            <input type="datetime-local" id="data_evento" name="data_evento">
+        </p>
+        <p>
+            <label for="data_evento_fim">Data de Fim do Evento:</label><br>
+            <input type="datetime-local" id="data_evento_fim" name="data_evento_fim">
+        </p>
+        <p>
+            <label for="banner_imagem">Banner do Evento (Imagem):</label><br>
+            <input type="file" id="banner_imagem" name="banner_imagem">
+        </p>
 
-        <label>Preco do Evento</label>
-        <input type="number" name="preco"><br><br>
-
-        <label>Quantidade de ingressos</label>
-        <input type="number" name="quantidade"><br><br>
-
-        <label>Data do Evento</label>
-        <input type="datetime-local" name="data_evento"><br><br>
-
-        <label>Data do Fim do Evento</label>
-        <input type="datetime-local" name="data_evento_fim"><br><br>
-
-        <button type="submit" name="criar" class="botao">CRIAR</button> <a href="/Public/Usuarios/dashboard.php" class="botao">Voltar</a>
+        <br>
+        <button type="submit" class="botao">Cadastrar Evento</button>
     </form>
-    
+
 </body>
 </html>

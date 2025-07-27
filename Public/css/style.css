@@ -1,0 +1,19 @@
+.imagem-quadrada {
+    width: 150px;         /* Defina a largura desejada para o quadrado */
+    height: 200px;        /* Defina a altura (igual à largura) */
+    object-fit: cover;    /* A mágica acontece aqui! */
+    object-position: center; /* Centraliza a imagem dentro do quadro antes de cortar */
+    border-radius: 8px;   /* Opcional: para deixar as bordas arredondadas */
+    display: block;       /* Garante que a imagem se comporte bem dentro da célula da tabela */
+}
+.botao {
+    display: inline-block;
+    padding: 10px 15px;
+    margin: 10px 0;
+    background-color: #007bff;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+}

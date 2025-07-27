@@ -3,22 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/Public/css/style.css">
     <title>Confirme sua Compra</title>
 </head>
 <body>
-    <style>
-        .botao {
-            display: inline-block;
-            padding: 10px 15px;
-            margin: 10px 0;
-            background-color: #007bff;
-            color: white;
-            text-decoration: none;
-            border-radius: 5px;
-            border: none;
-            cursor: pointer;
-        }
-    </style>
 
     <h1>Finalize sua Compra</h1>
     <p>Você está comprando: <strong><?= htmlspecialchars($produto['nome']) ?></strong></p>
