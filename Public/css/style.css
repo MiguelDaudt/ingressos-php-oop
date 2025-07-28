@@ -8,17 +8,15 @@
     box-sizing: border-box;
 }
 
-/* Variáveis de cor e fonte para usar no site todo */
 :root {
     --verde-escuro: #09410a;
     --verde-claro: #5ea95e;
-    --creme-fundo: rgba(245, 245, 220, 0.85); /* Bege/Creme com 85% de opacidade */
-    --creme-card: #f5f5dc; /* Bege/Creme sólido */
+    --creme-fundo: rgba(245, 245, 220, 0.85); 
+    --creme-card: #f5f5dc;
     --fonte-logo: 'Intro Caps', sans-serif;
     --fonte-texto: 'Nice Chalk', sans-serif;
 }
 
-/* Estilo do fundo e da fonte padrão da página */
 body {
     background-color: var(--verde-claro);
     background-image: url('../images/imagem de fundo.jpg');
@@ -34,7 +32,6 @@ body {
    2. LAYOUT PRINCIPAL (CABEÇALHO E CONTEÚDO)
    ================================= */
 
-/* Barra Superior (Header) */
 .barra-superior {
     display: flex;
     justify-content: space-between;
@@ -45,7 +42,6 @@ body {
     text-transform: uppercase;
 }
 
-/* Conteúdo Principal (Main) */
 .conteudo-principal {
     padding: 20px;
 }
@@ -55,7 +51,6 @@ body {
    3. COMPONENTES
    ================================= */
 
-/* Componentes do Header */
 .logo img {
     height: 50px;
 }
@@ -63,9 +58,8 @@ body {
 .navegacao-principal, .area-usuario {
     display: flex;
     align-items: center;
-    gap: 20px; /* Espaçamento entre os itens */
+    gap: 20px; 
 }
-/* Em public/css/style.css */
 
 .bem-vindo {
     color: var(--verde-escuro);
@@ -84,14 +78,12 @@ body {
     margin: 0 5px;
 }
 
-/* Título da Vitrine */
 .vitrine-ingressos h2 {
     font-family: var(--fonte-logo);
     margin-bottom: 20px;
     text-transform: uppercase;
 }
 
-/* Componente da Grade de Ingressos */
 .grid-ingressos {
     background-color: var(--creme-fundo);
     padding: 20px;
@@ -101,7 +93,6 @@ body {
     gap: 14px;
 }
 
-/* Componente do Card de Ingresso */
 .card-ingresso {
     background-color: var(--creme-card);
     color: var(--verde-escuro);
@@ -114,7 +105,7 @@ body {
 .card-imagem {
     height: 172px;
     width: 100%;
-    background-color: var(--verde-escuro); /* Cor de fundo para cards sem imagem */
+    background-color: var(--verde-escuro); 
 }
 
 .card-imagem img {
@@ -126,7 +117,7 @@ body {
 .card-info {
     padding: 10px;
     font-family: var(--fonte-texto);
-    flex-grow: 1; /* Garante que a área de texto ocupe o espaço restante */
+    flex-grow: 1; 
 }
 
 .card-info h3 {
@@ -139,7 +130,6 @@ body {
     margin-bottom: 3px;
 }
 
-/* Componente Botão (reutilizável) */
 .botao {
     display: inline-block;
     padding: 10px 15px;
@@ -156,42 +146,36 @@ body {
    ESTILOS DA TABELA DE DADOS
    ================================= */
 
-/* Estilo geral da tabela */
 .tabela-dados {
-    width: 100%; /* Faz a tabela ocupar toda a largura disponível */
-    border-collapse: collapse; /* Remove o espaçamento duplo entre as células */
+    width: 100%; 
+    border-collapse: collapse; 
     margin-top: 20px;
     font-size: 0.9em;
-    font-family: sans-serif; /* Uma fonte mais legível para tabelas */
+    font-family: sans-serif; 
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
     background-color: white;
     color: #333;
 }
 
-/* Estilo do cabeçalho da tabela (th) */
 .tabela-dados thead tr {
-    background-color: var(--verde-escuro); /* Usa a cor do seu design */
+    background-color: var(--verde-escuro); 
     color: #ffffff;
     text-align: left;
 }
 
-/* Estilo das células do cabeçalho (th) e do corpo (td) */
 .tabela-dados th,
 .tabela-dados td {
-    padding: 12px 15px; /* Espaçamento interno */
+    padding: 12px 15px; 
 }
 
-/* Estilo das linhas do corpo da tabela */
 .tabela-dados tbody tr {
-    border-bottom: 1px solid #dddddd; /* Linha divisória entre as linhas */
+    border-bottom: 1px solid #dddddd; 
 }
 
-/* Efeito de hover para destacar a linha sob o mouse */
 .tabela-dados tbody tr:hover {
     background-color: #f3f3f3;
 }
 
-/* Estilo base para os botões de ação */
 .acao-btn {
     padding: 5px 10px;
     border-radius: 4px;
@@ -201,36 +185,33 @@ body {
     margin-right: 5px;
 }
 
-/* Cor específica para o botão de editar */
 .editar-btn {
-    background-color: #007bff; /* Azul */
+    background-color: #007bff; 
 }
 
-/* Cor específica para o botão de deletar */
 .deletar-btn {
-    background-color: #dc3545; /* Vermelho */
+    background-color: #dc3545;
 }
 
 /* =================================
    ESTILOS PARA PÁGINAS DE FORMULÁRIO
    ================================= */
 
-/* Prepara o body para centralizar o conteúdo */
 .fundo-pagina-forms {
     display: flex;
-    justify-content: center; /* Centraliza na horizontal */
-    align-items: center;   /* Centraliza na vertical */
-    min-height: 100vh;     /* Garante que a página ocupe a altura toda da tela */
+    justify-content: center; 
+    align-items: center;   
+    min-height: 100vh;     
 }
 
-/* O container semi-transparente */
+
 .form-container {
-    background-color: var(--creme-fundo); /* Usa a variável de cor que já definimos */
+    background-color: var(--creme-fundo);
     padding: 40px;
     border-radius: 10px;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
     width: 100%;
-    max-width: 400px; /* Define uma largura máxima para o formulário */
+    max-width: 400px; 
     color: var(--verde-escuro);
 }
 
@@ -241,13 +222,13 @@ body {
     font-size: 2em;
 }
 
-/* Estilo para agrupar label e input */
+
 .form-group {
     margin-bottom: 20px;
 }
 
 .form-group label {
-    display: block; /* Faz o label ocupar uma linha inteira */
+    display: block;
     margin-bottom: 5px;
     font-weight: bold;
 }
@@ -260,10 +241,9 @@ body {
     border: 1px solid #ccc;
     border-radius: 5px;
     font-size: 1em;
-    font-family: sans-serif; /* Melhora a legibilidade dentro dos campos */
+    font-family: sans-serif; 
 }
 
-/* Estilo para a área dos botões */
 .form-actions {
     margin-top: 30px;
     text-align: center;
@@ -298,11 +278,10 @@ body {
     margin: 0 10px;
 }
 
-/* Estilos para o bloco de informações da compra */
 .info-compra {
     margin-bottom: 20px;
     padding-bottom: 20px;
-    border-bottom: 1px solid rgba(9, 65, 10, 0.2); /* Linha divisória sutil */
+    border-bottom: 1px solid rgba(9, 65, 10, 0.2);
     text-align: center;
     font-size: 1.1em;
 }
@@ -311,9 +290,8 @@ body {
     margin-bottom: 8px;
 }
 
-/* Estilo para o aviso do contador */
 .timer-aviso {
-    color: #c00; /* Vermelho escuro */
+    color: #c00;
     font-weight: bold;
     text-align: center;
     margin-bottom: 25px;
