@@ -26,16 +26,31 @@ try {
 	descricao	TEXT,
 	preco	REAL NOT NULL,
 	quantidade	INTEGER NOT NULL,
-	reservado	INTEGER DEFAULT 0,
+	quantidade_reservada	INTEGER DEFAULT 0,
 	data_reserva	INTEGER,
 	id_usuario	NUMERIC NOT NULL,
 	data_evento	TEXT,
 	data_evento_fim	TEXT,
+	id_usuario_reserva	INTEGER, caminho_imagem TEXT, endereco TEXT, tipo_evento TEXT,
 	PRIMARY KEY(id AUTOINCREMENT),
 	FOREIGN KEY(id_usuario) REFERENCES usuarios(id)
     ");
 
-    // Executa os comandos SQL
+	//sql para criar a tabela de compras
+	$sqlCompras = ("CREATE TABLE compras (
+	id	INTEGER,
+	id_cliente	INTEGER NOT NULL,
+	id_ingresso	INTEGER NOT NULL,
+	data_compra	DATETIME DEFAULT CURRENT_TIMESTAMP,
+	quantidade	INTEGER NOT NULL DEFAULT 1,
+	PRIMARY KEY(id AUTOINCREMENT),
+	FOREIGN KEY(id_cliente) REFERENCES usuarios(id),
+	FOREIGN KEY(id_ingresso) REFERENCES ingressos(id)
+	");
+
+	$pdo->exec($sqlCompras);
+    echo "Tabela 'compras' verificada/criada com sucesso!\n";
+
     $pdo->exec($sqlUsuarios);
     echo "Tabela 'usuarios' verificada/criada com sucesso!\n";
 
