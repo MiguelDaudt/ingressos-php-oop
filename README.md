@@ -10,6 +10,7 @@ Este projeto foi um grnade desafio para mim, pois ainda tenho pouca experiência
 A ideia do projeto foi sugestão do professor porém eu não teria gostado mais. No TCC que apresentei no Ensino Médio, eu havia idealizado um Aplicativo Mobile feito para eventos culturais que aconteciam pela região de Chapecó o nome era "XAP Cultura", eu fiz toda a parte de pesquisa do artigo que preciávamos entregar, e na apresentação do projeto o Chico Pavin (Gerente de Marketing da IXCSoft) estáva como convidado na banca do TCC, e ele gostou muito desse projeto e ofereceu nos mentorar para realizarmos esse Aplicativo/Portal de eventos, porém na época estava passando por alguns problemas pessoais e me encontrava bem perdido, sem saber o que fazer e para onde ir após o ensino médio, então nunca chegamos a botar em prática. 
 
 Por isso eu acho que esse tema foi perfeito para mim, pude finalmente por em prática um projeto do passado que até então estava abandonado. Não irei parar de seguir melhorando esse projeto, quero corrigir alguns bugs na compra e adicionar mais funcionalidades, como poder gerir o seu perfil, alterar senha, nome, etc. Também já tenho outras ideias de projetos que quero fazer e graças a todo esse conhecimento que adquiri sei que irei conseguir.
+
 ---
 
 ## ✨ Funcionalidades Implementadas (Checklist)
