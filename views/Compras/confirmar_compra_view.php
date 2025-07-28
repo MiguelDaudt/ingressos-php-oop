@@ -25,7 +25,7 @@
             <input type="hidden" name="id_ingresso" value="<?= htmlspecialchars($produto['id']) ?>">
             
             <button type="submit" class="botao-forms">Confirmar e Comprar Agora</button>
-            <a href="/public/vitrine.php" class="botao-forms-link">Cancelar e Voltar</a>
+            <a href="/Public/index.php" class="botao-forms-link">Cancelar e Voltar</a>
         </form>
     </div>
 
