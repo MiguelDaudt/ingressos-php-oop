@@ -13,8 +13,10 @@ $email = $_POST['email'] ?? null;
 $senha = $_POST['senha'] ?? null;
 
 if (empty($nome) || empty($email) || empty($senha)) {
-    die("Erro: Você deve preencher todos os campos do formulário.");
-}
+        echo "<script>alert('Voce precisa preencher todos os campos');
+        window.location.href = '/views/Usuarios/cadastro_usuario.html';
+        </script>";
+    }
 
 $dadosUsuario = [
     'nome' => $nome,

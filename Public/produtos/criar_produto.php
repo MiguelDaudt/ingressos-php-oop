@@ -4,13 +4,10 @@ require_once __DIR__ . '/../../vendor/autoload.php';
 session_start();
 use App\Models\Produto;
 
-// Garante que o usuário está logado
 if (isset($_SESSION['usuario_id'])) {
 
-    // Garante que o formulário foi enviado
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
-        // --- Bloco de upload que agora sabemos que funciona ---
         $caminhoImagemParaSalvar = null;
         if (isset($_FILES['banner_imagem']) && $_FILES['banner_imagem']['error'] === UPLOAD_ERR_OK) {
             
@@ -28,24 +25,20 @@ if (isset($_SESSION['usuario_id'])) {
                 $caminhoImagemParaSalvar = '/Public/uploads/banners/' . $nomeUnico;
             }
         }
-        // --- Fim do bloco de upload ---
 
 
-        // Prepara os dados para o banco de dados
         $produtoModel = new Produto();
         
-        // Adiciona os dados que não vêm do formulário
         $_POST['caminho_imagem'] = $caminhoImagemParaSalvar;
         $_POST['id_usuario'] = $_SESSION['usuario_id'];
 
-        // Tenta inserir no banco
         if ($produtoModel->inserir($_POST)) {
-            // Sucesso: Redireciona para a lista de produtos do vendedor
-            header("Location: /Public/Usuarios/dashboard.php"); // Verifique se o nome do seu arquivo de listagem é este
+            header("Location: /Public/index.php"); 
             exit();
         } else {
-            // Falha
-            die("Ocorreu um erro ao salvar os dados do produto no banco de dados.");
+            echo "<script>alert('Ocorreu um erro ao criar o produto');
+            window.location.href = '/views/criar_produto_form.php';
+            </script>";        
         }
     }
 

@@ -16,5 +16,7 @@ require_once __DIR__ . '/../../views/listar_produto_view.php';
 
 }
 else{
-    die("Acesso negado!");
-}
+        echo "<script>alert('Voce precisa estar logado como \'Vendedor\' para poder ver os ingressos criados');
+        window.location.href = '/Public/index.php';
+        </script>";
+    }

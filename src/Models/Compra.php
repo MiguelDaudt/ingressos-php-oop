@@ -35,8 +35,12 @@ class Compra extends Model
         
         try{
         $sql = "SELECT 
-                    ingressos.nome, 
+                    ingressos.caminho_imagem,
+                    ingressos.nome,
+                    ingressos.tipo_evento, 
                     ingressos.descricao, 
+                    ingressos.preco,
+                    ingressos.endereco,
                     ingressos.data_evento, 
                     compras.data_compra,
                     compras.id as id_compra 

@@ -13,8 +13,10 @@ $email = $_POST['email'] ?? null;
 $senha = $_POST['senha'] ?? null;
 
 if (empty($nome) || empty($email) || empty($senha)) {
-    die("Erro: Você deve preencher todos os campos do formulário.");
-}
+        echo "<script>alert('Voce precisa preencher todos os campos');
+        window.location.href = '/views/Clientes/cadastro_cliente.html';
+        </script>";
+    }
 
 $dadosCliente = [
     'nome' => $nome,
@@ -29,6 +31,4 @@ if ($usuarioModel->criar($dadosCliente)) {
     header('Location: /views/Clientes/login_cliente.html'); 
     exit();
 
-} else {
-    echo "Ocorreu um erro que não foi capturado. Verifique a classe Usuario.";
 }

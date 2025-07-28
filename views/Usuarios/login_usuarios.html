@@ -1,25 +1,38 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Cliente - XAP Cultura</title>
     <link rel="stylesheet" href="/Public/css/style.css">
-    <title>Document</title>
 </head>
-<body>
-    <h1>LOGIN USUARIOS</h1>
-    <form action="/Public/login.php" method="post">
+<body class="fundo-pagina-forms">
+
+    <div class="form-container">
+        <h1>Login Vendedor</h1>
         
-        <label>E-mail:</label>
-        <input type="text" name="email"><br><br>
+        <form action="/Public/login.php" method="POST">
+            <div class="form-group">
+                <label for="email">E-mail</label>
+                <input type="email" id="email" name="email" required>
+            </div>
 
-        <label>Senha:</label>
-        <input type="password" name="senha"><br><br>
+            <div class="form-group">
+                <label for="senha">Senha</label>
+                <input type="password" id="senha" name="senha" required>
+            </div>
 
-        <input type="hidden" name="papel_esperado" value="vendedor">
+            <input type="hidden" name="papel_esperado" value="vendedor">
 
-        <button type="submit" name="Login" class="botao">Login</button>
-    </form>
-        <a href="/Public/index.php" class="botao">Voltar</a>
+            <div class="form-actions">
+                <button type="submit" class="botao-forms">Login</button>
+            </div>
+        </form>
+
+        <div class="links-alternativos">
+            <a href="/Public/index.php">Voltar</a>
+        </div>
+    </div>
+
 </body>
 </html>

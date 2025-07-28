@@ -12,7 +12,7 @@ if(!isset($_SESSION['usuario_id'])){
         </script>";
 } elseif($_SESSION['usuario_papel'] !== 'cliente'){
         echo "<script>alert('Voce precisa estar logado como \'Cliente\' para poder reservar um ingresso');
-        window.location.href = '/Public/Usuarios/dashboard.php';
+        window.location.href = '/Public/index.php';
         </script>";
     }
 

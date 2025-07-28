@@ -15,7 +15,9 @@ use App\Models\Usuario;
             $papel_esperado = $_POST['papel_esperado'] ?? null;
 
         if(empty($email)||empty($senha)){
-            die("Todos os campos devem ser preenchidos");
+            echo "<script>alert('Voce precisa preencher todos os campos');
+            window.location.href = '/Public/index.php';
+            </script>";
         }
 
         $usuarioM = new Usuario();
@@ -34,17 +36,21 @@ use App\Models\Usuario;
             
 
                 if($usuario['papel'] === 'vendedor'){
-                    header('Location: ../../Public/Usuarios/dashboard.php');
+                    header('Location: ../../Public/index.php');
                     exit();
                 }
                 else{
-                    header('Location: ../../Public/Clientes/dashboard_cliente.php');
+                    header('Location: ../../Public/index.php');
                     exit();
                 }
             } else {
-                die("Voce nao tem uma conta desse tipo cadastrada para esse e-mail");
-            }
+                    echo "<script>alert('Voce nao tem conta cadastrada desse tipo para esse Email');
+                    window.location.href = '/views/Clientes/login_cliente.html';
+                    </script>";            
+                }
             } else {
-                die("E-mail ou Senha incorretos");
+                        echo "<script>alert('Email ou Senha incorretos');
+                        window.location.href = '/views/Clientes/login_cliente.html';
+                        </script>";
                 }
 

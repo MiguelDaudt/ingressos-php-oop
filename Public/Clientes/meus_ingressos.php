@@ -5,10 +5,9 @@ require_once __DIR__ . '/../../vendor/autoload.php';
 session_start();
 
 use App\Models\Compra;
-use App\Models\Produto;
 
-if(!isset($_SESSION['usuario_id'])){
-echo "<script>alert('Voce precisa estar logado para poder visualizar seus ingressos');
+if(!isset($_SESSION['usuario_id']) || $_SESSION['usuario_papel'] !== 'cliente'){
+echo "<script>alert('Voce precisa estar logado como /Cliente/ para poder visualizar seus ingressos');
 window.location.href = '/Public/index.php';
 </script>";
 }

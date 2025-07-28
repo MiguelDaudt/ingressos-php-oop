@@ -1,19 +1,320 @@
-.imagem-quadrada {
-    width: 150px;         /* Defina a largura desejada para o quadrado */
-    height: 200px;        /* Defina a altura (igual à largura) */
-    object-fit: cover;    /* A mágica acontece aqui! */
-    object-position: center; /* Centraliza a imagem dentro do quadro antes de cortar */
-    border-radius: 8px;   /* Opcional: para deixar as bordas arredondadas */
-    display: block;       /* Garante que a imagem se comporte bem dentro da célula da tabela */
+/* =================================
+   1. RESET E CONFIGURAÇÕES GLOBAIS
+   ================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
+
+/* Variáveis de cor e fonte para usar no site todo */
+:root {
+    --verde-escuro: #09410a;
+    --verde-claro: #5ea95e;
+    --creme-fundo: rgba(245, 245, 220, 0.85); /* Bege/Creme com 85% de opacidade */
+    --creme-card: #f5f5dc; /* Bege/Creme sólido */
+    --fonte-logo: 'Intro Caps', sans-serif;
+    --fonte-texto: 'Nice Chalk', sans-serif;
+}
+
+/* Estilo do fundo e da fonte padrão da página */
+body {
+    background-color: var(--verde-claro);
+    background-image: url('../images/imagem de fundo.jpg');
+    background-size: cover;
+    background-position: center;
+    background-blend-mode: multiply;
+    color: white;
+    font-family: var(--fonte-texto);
+}
+
+
+/* =================================
+   2. LAYOUT PRINCIPAL (CABEÇALHO E CONTEÚDO)
+   ================================= */
+
+/* Barra Superior (Header) */
+.barra-superior {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 40px;
+    background-color: var(--creme-fundo);
+    font-family: var(--fonte-logo);
+    text-transform: uppercase;
+}
+
+/* Conteúdo Principal (Main) */
+.conteudo-principal {
+    padding: 20px;
+}
+
+
+/* =================================
+   3. COMPONENTES
+   ================================= */
+
+/* Componentes do Header */
+.logo img {
+    height: 50px;
+}
+
+.navegacao-principal, .area-usuario {
+    display: flex;
+    align-items: center;
+    gap: 20px; /* Espaçamento entre os itens */
+}
+/* Em public/css/style.css */
+
+.bem-vindo {
+    color: var(--verde-escuro);
+}
+
+.navegacao-principal a, .area-usuario a {
+    text-decoration: none;
+    color: var(--verde-escuro);
+}
+
+.navegacao-principal img, .area-usuario img {
+    height: 30px;
+}
+
+.autenticacao span {
+    margin: 0 5px;
+}
+
+/* Título da Vitrine */
+.vitrine-ingressos h2 {
+    font-family: var(--fonte-logo);
+    margin-bottom: 20px;
+    text-transform: uppercase;
+}
+
+/* Componente da Grade de Ingressos */
+.grid-ingressos {
+    background-color: var(--creme-fundo);
+    padding: 20px;
+    border-radius: 10px;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr); 
+    gap: 14px;
+}
+
+/* Componente do Card de Ingresso */
+.card-ingresso {
+    background-color: var(--creme-card);
+    color: var(--verde-escuro);
+    border-radius: 5px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+.card-imagem {
+    height: 172px;
+    width: 100%;
+    background-color: var(--verde-escuro); /* Cor de fundo para cards sem imagem */
+}
+
+.card-imagem img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.card-info {
+    padding: 10px;
+    font-family: var(--fonte-texto);
+    flex-grow: 1; /* Garante que a área de texto ocupe o espaço restante */
+}
+
+.card-info h3 {
+    font-size: 1.2em;
+    margin-bottom: 5px;
+}
+
+.card-info p {
+    font-size: 0.9em;
+    margin-bottom: 3px;
+}
+
+/* Componente Botão (reutilizável) */
 .botao {
     display: inline-block;
     padding: 10px 15px;
     margin: 10px 0;
-    background-color: #007bff;
+    background-color: #09410a;
     color: white;
     text-decoration: none;
     border-radius: 5px;
     border: none;
     cursor: pointer;
+}
+
+/* =================================
+   ESTILOS DA TABELA DE DADOS
+   ================================= */
+
+/* Estilo geral da tabela */
+.tabela-dados {
+    width: 100%; /* Faz a tabela ocupar toda a largura disponível */
+    border-collapse: collapse; /* Remove o espaçamento duplo entre as células */
+    margin-top: 20px;
+    font-size: 0.9em;
+    font-family: sans-serif; /* Uma fonte mais legível para tabelas */
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+    background-color: white;
+    color: #333;
+}
+
+/* Estilo do cabeçalho da tabela (th) */
+.tabela-dados thead tr {
+    background-color: var(--verde-escuro); /* Usa a cor do seu design */
+    color: #ffffff;
+    text-align: left;
+}
+
+/* Estilo das células do cabeçalho (th) e do corpo (td) */
+.tabela-dados th,
+.tabela-dados td {
+    padding: 12px 15px; /* Espaçamento interno */
+}
+
+/* Estilo das linhas do corpo da tabela */
+.tabela-dados tbody tr {
+    border-bottom: 1px solid #dddddd; /* Linha divisória entre as linhas */
+}
+
+/* Efeito de hover para destacar a linha sob o mouse */
+.tabela-dados tbody tr:hover {
+    background-color: #f3f3f3;
+}
+
+/* Estilo base para os botões de ação */
+.acao-btn {
+    padding: 5px 10px;
+    border-radius: 4px;
+    color: white;
+    text-decoration: none;
+    font-size: 0.8em;
+    margin-right: 5px;
+}
+
+/* Cor específica para o botão de editar */
+.editar-btn {
+    background-color: #007bff; /* Azul */
+}
+
+/* Cor específica para o botão de deletar */
+.deletar-btn {
+    background-color: #dc3545; /* Vermelho */
+}
+
+/* =================================
+   ESTILOS PARA PÁGINAS DE FORMULÁRIO
+   ================================= */
+
+/* Prepara o body para centralizar o conteúdo */
+.fundo-pagina-forms {
+    display: flex;
+    justify-content: center; /* Centraliza na horizontal */
+    align-items: center;   /* Centraliza na vertical */
+    min-height: 100vh;     /* Garante que a página ocupe a altura toda da tela */
+}
+
+/* O container semi-transparente */
+.form-container {
+    background-color: var(--creme-fundo); /* Usa a variável de cor que já definimos */
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    width: 100%;
+    max-width: 400px; /* Define uma largura máxima para o formulário */
+    color: var(--verde-escuro);
+}
+
+.form-container h1 {
+    font-family: var(--fonte-logo);
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 2em;
+}
+
+/* Estilo para agrupar label e input */
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block; /* Faz o label ocupar uma linha inteira */
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.form-group input,
+.form-group textarea,
+.form-group select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1em;
+    font-family: sans-serif; /* Melhora a legibilidade dentro dos campos */
+}
+
+/* Estilo para a área dos botões */
+.form-actions {
+    margin-top: 30px;
+    text-align: center;
+}
+
+.botao-forms {
+    background-color: var(--verde-escuro);
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+    font-family: var(--fonte-logo);
+    text-transform: uppercase;
+    margin-right: 10px;
+}
+
+.botao-forms-link {
+    color: var(--verde-escuro);
+    text-decoration: none;
+}
+
+.links-alternativos {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.links-alternativos a {
+    color: var(--verde-escuro);
+    text-decoration: none;
+    margin: 0 10px;
+}
+
+/* Estilos para o bloco de informações da compra */
+.info-compra {
+    margin-bottom: 20px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid rgba(9, 65, 10, 0.2); /* Linha divisória sutil */
+    text-align: center;
+    font-size: 1.1em;
+}
+
+.info-compra p {
+    margin-bottom: 8px;
+}
+
+/* Estilo para o aviso do contador */
+.timer-aviso {
+    color: #c00; /* Vermelho escuro */
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 25px;
 }

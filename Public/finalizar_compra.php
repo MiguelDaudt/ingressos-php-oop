@@ -13,13 +13,17 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
 }
 
 if (!isset($_SESSION['usuario_id']) || $_SESSION['usuario_papel'] !== 'cliente') {
-    die("Acesso restrito a clientes.");
-}
+        echo "<script>alert('Voce precisa estar logado como Cliente para acessar');
+        window.location.href = '/Public/index.php';
+        </script>";
+    }
 
 $id_ingressos = filter_input(INPUT_POST, 'id_ingresso', FILTER_VALIDATE_INT);
 if (!$id_ingressos) {
-    die("ID de ingresso inválido.");
-}
+        echo "<script>alert('ID do ingresso invalido');
+        window.location.href = '/Public/index.php';
+        </script>";
+    }
 
 $id_cliente = $_SESSION['usuario_id'];
 
@@ -52,7 +56,7 @@ try {
     $pdo->commit();
 
     echo "<script>alert('Compra finalizada com sucesso!!');
-    window.location.href = '/Public/Clientes/dashboard_cliente.php';
+    window.location.href = '/Public/index.php';
     </script>";
     exit();
 
