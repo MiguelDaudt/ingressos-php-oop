@@ -54,27 +54,33 @@ Siga os passos abaixo para configurar e rodar o projeto em um ambiente de desenv
 ### Passo a Passo
 
 1.  **Clonar o Repositório:**
+    Abra seu terminal, navegue até a pasta onde guarda seus projetos e clone o repositório.
     ```bash
-    git clone [URL_DO_REPOSITORIO_NO_GITHUB]
-    cd [NOME_DA_PASTA_DO_PROJETO]
+    git clone https://github.com/MiguelDaudt/ingressos-php-oop
     ```
 
-2.  **Instalar Dependências:**
-    (Este projeto não usa dependências externas)
+2.  **Mover para a Pasta do Servidor:**
+    Mova a pasta do projeto clonado (`ingressos-php-oop-main`) para dentro da pasta principal do seu servidor local (geralmente `C:/xampp/htdocs` ou `C:/wamp/www`).
+
+3.  **Instalar Dependências:**
+    Abra o terminal **dentro da pasta do projeto** e rode o comando do Composer.
     ```bash
     composer install
     ```
 
-3.  **Configurar o Banco de Dados:**
-    O projeto usa SQLite, então nenhuma configuração de servidor de banco é necessária. Para criar o arquivo de banco de dados e todas as tabelas, rode o seguinte comando no seu terminal, a partir da pasta raiz do projeto:
+4.  **Configurar o Banco de Dados:**
+    Para criar o arquivo de banco de dados (`.db`) e todas as tabelas, use o terminal para rodar o script de setup.
+    > **Dica:** Se o comando `php` não for reconhecido, use o **Shell do XAMPP**, que já vem configurado.
     ```bash
     php setup_database.php
     ```
-    Isso irá criar o arquivo `database.db` com todas as tabelas necessárias.
+    Isso irá criar o arquivo `database.db` com a estrutura necessária.
 
-4.  **Acessar o Sistema:**
-    Abra seu navegador e acesse a URL configurada no seu servidor local (ex: `localhost:8080/Public/index.php`).
-
+5.  **Acessar o Sistema:**
+    Com o seu servidor Apache rodando, abra o navegador e acesse a URL correspondente à sua pasta, apontando para o diretório `Public`.
+    
+    Exemplo:
+    `http://localhost/[NOME_DA_PASTA_DO_PROJETO]/Public/index.php`
 ---
 
 ## Bônus Implementado
